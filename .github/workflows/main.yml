@@ -1,0 +1,9 @@
+name: My First GitHub Action
+on: [push] # It ll run on when we push to git
+jobs: # If not in an array then jobs may not run sequencially
+  print-hello-world:
+    runs-on: ubuntu-latest
+    steps: # Step ll run sequentially
+      - run: echo "Hello World!!!!"
+      - run: echo "This is step 2"
+  
