@@ -6,8 +6,8 @@ jobs: # Jobs may not run sequencially
     steps: # Step ll run sequentially
       - uses: actions/checkout@v2 # This clones the repo to the GitHub Runner
       - uses: actions/setup-node@v2 # Setup node
-        with:
-          node-version: '14.17.0'
+        # with:
+        #   node-version: '14.17.0'
       - name: Install node_modules
         run: yarn
       - name: Build the Project
