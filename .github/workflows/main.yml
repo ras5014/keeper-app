@@ -1,9 +1,17 @@
 name: My First GitHub Action
 on: [push] # It ll run on when we push to git
-jobs: # If not in an array then jobs may not run sequencially
-  print-hello-world:
+jobs: # Jobs may not run sequencially
+  build-app:
     runs-on: ubuntu-latest
     steps: # Step ll run sequentially
-      - run: echo "Hello World!!!!"
-      - run: echo "This is step 2"
+      - uses: actions/checkout@v2 # This clones the repo to the GitHub Runner
+      - uses: actions/setup-node@v2 # Setup node
+        with:
+          node-version: '14.17.0'
+      - name: Install node_modules
+        run: yarn
+      - name: Build the Project
+        run: yarn build
+      - name: Setup Finish
+        run: echo "Hurray!"
   
