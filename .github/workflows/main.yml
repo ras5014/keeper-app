@@ -3,6 +3,10 @@ on: [push] # It ll run on when we push to git
 jobs: # Jobs may not run sequencially
   build-app:
     runs-on: ubuntu-latest
+    env: 
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps: # Step ll run sequentially
       - uses: actions/checkout@v2 # This clones the repo to the GitHub Runner
       - uses: actions/setup-node@v2 # Setup node
@@ -17,8 +21,8 @@ jobs: # Jobs may not run sequencially
           cd build
           mkdir .vercel
           touch project.json
-          echo '{"projectId": "prj_FNHwAR4NxV8bHcNc1qrDjtcSqkk7",
-          "orgId": "j4RgRgNn9kctl8epQ92dcBW8"}' > project.json
+          echo "{\"projectId\": \"VERCEL_PROJECT_ID\",
+          \"orgId\": \"VERCEL_ORG_ID\"}" > project.json
       - name: Deploying the project
         run: yarn deploy
       - name: Setup Finish
