@@ -12,10 +12,14 @@ jobs: # Jobs may not run sequencially
         run: yarn
       - name: Build the Project
         run: yarn build
+      - name: Sets the vercel env
+        run: |
+          cd build
+          mkdir .vercel
+          touch project.json
+          echo '{"projectId": "prj_FNHwAR4NxV8bHcNc1qrDjtcSqkk7",
+          "orgId": "j4RgRgNn9kctl8epQ92dcBW8"}' > project.json
       - name: Deploying the project
-        env:
-          VERCEL_ORG_ID: j4RgRgNn9kctl8epQ92dcBW8
-          VERCEL_PROJECT_ID: prj_FNHwAR4NxV8bHcNc1qrDjtcSqkk7
         run: yarn deploy
       - name: Setup Finish
         run: echo "Hurray!"
