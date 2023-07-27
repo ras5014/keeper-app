@@ -21,8 +21,8 @@ jobs: # Jobs may not run sequencially
           cd build
           mkdir .vercel
           touch project.json
-          echo "{\"projectId\": \"$VERCEL_PROJECT_ID\",
-          \"orgId\": \"$VERCEL_ORG_ID\"}" > project.json
+          echo "{\"projectId\":\"$VERCEL_PROJECT_ID\",
+          \"orgId\":\"$VERCEL_ORG_ID\"}" > project.json
       - name: Deploying the project
         run: yarn deploy
       - name: Setup Finish
